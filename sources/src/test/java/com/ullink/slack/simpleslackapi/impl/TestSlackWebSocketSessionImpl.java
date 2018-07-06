@@ -10,14 +10,14 @@ import static org.junit.Assert.fail;
 
 public class TestSlackWebSocketSessionImpl {
 
-  @Test(expected = IllegalArgumentException.class)
-  public void testSendMessageWithNullChanel(@Mocked WebSocketContainerProvider provider) throws Exception{
-    SlackWebSocketSessionImpl webSocketSession = new SlackWebSocketSessionImpl(provider,
-        "", false, false, 42L, TimeUnit.MILLISECONDS);
-    try {
-      webSocketSession.sendMessage(null, "");
-    } catch (NullPointerException e) {
-      fail("NullPointerException unexpected here");
+    @Test(expected = IllegalArgumentException.class)
+    public void testSendMessageWithNullChanel(@Mocked WebSocketContainerProvider provider) throws Exception {
+        SlackWebSocketSessionImpl webSocketSession = new SlackWebSocketSessionImpl(provider,
+                "", false, false, 42L, TimeUnit.MILLISECONDS);
+        try {
+            webSocketSession.sendMessage(null, "");
+        } catch (NullPointerException e) {
+            fail("NullPointerException unexpected here");
+        }
     }
-  }
 }

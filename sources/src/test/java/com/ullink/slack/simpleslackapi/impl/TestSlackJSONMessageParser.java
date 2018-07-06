@@ -56,7 +56,10 @@ public class TestSlackJSONMessageParser {
             }
 
             @Override
-            public void setPresence(SlackPersona.SlackPresence presence) {};
+            public void setPresence(SlackPersona.SlackPresence presence) {
+            }
+
+            ;
 
             @Override
             public void connect() {
@@ -68,9 +71,9 @@ public class TestSlackJSONMessageParser {
                 users.put(user2.getId(), user2);
                 users.put(user3.getId(), user3);
 
-                SlackIntegration integration = new SlackIntegrationImpl("TESTINTEGRATION1","integration 1",false);
+                SlackIntegration integration = new SlackIntegrationImpl("TESTINTEGRATION1", "integration 1", false);
 
-                integrations.put(integration.getId(),integration);
+                integrations.put(integration.getId(), integration);
 
                 SlackChannel channel1 = new SlackChannel("TESTCHANNEL1", "testchannel1", null, null, false, false, false);
                 SlackChannel channel2 = new SlackChannel("TESTCHANNEL2", "testchannel2", null, null, false, false, false);
@@ -117,26 +120,22 @@ public class TestSlackJSONMessageParser {
             }
 
             @Override
-            public SlackMessageHandle<SlackMessageReply> sendFile(SlackChannel channel, byte[] data, String fileName)
-            {
+            public SlackMessageHandle<SlackMessageReply> sendFile(SlackChannel channel, byte[] data, String fileName) {
                 return null;
             }
 
             @Override
-            public SlackMessageHandle<SlackMessageReply> sendFile(SlackChannel channel, byte[] data, String fileName, String title, String initialComment)
-            {
+            public SlackMessageHandle<SlackMessageReply> sendFile(SlackChannel channel, byte[] data, String fileName, String title, String initialComment) {
                 return null;
             }
 
             @Override
-            public SlackMessageHandle<SlackMessageReply> sendFileToUser(SlackUser user, byte[] data, String fileName)
-            {
+            public SlackMessageHandle<SlackMessageReply> sendFileToUser(SlackUser user, byte[] data, String fileName) {
                 return null;
             }
 
             @Override
-            public SlackMessageHandle<SlackMessageReply> sendFileToUser(String userName, byte[] data, String fileName)
-            {
+            public SlackMessageHandle<SlackMessageReply> sendFileToUser(String userName, byte[] data, String fileName) {
                 return null;
             }
 
@@ -160,8 +159,8 @@ public class TestSlackJSONMessageParser {
                 return null;
             }
 
-            @Override public SlackMessageHandle<SlackMessageReply> removeReactionFromMessage(SlackChannel channel, String messageTimeStamp, String emojiCode)
-            {
+            @Override
+            public SlackMessageHandle<SlackMessageReply> removeReactionFromMessage(SlackChannel channel, String messageTimeStamp, String emojiCode) {
                 return null;
             }
 
@@ -181,14 +180,12 @@ public class TestSlackJSONMessageParser {
             }
 
             @Override
-            public SlackMessageHandle<SlackChannelReply> openDirectMessageChannel(SlackUser user)
-            {
+            public SlackMessageHandle<SlackChannelReply> openDirectMessageChannel(SlackUser user) {
                 return null;
             }
 
             @Override
-            public SlackMessageHandle<SlackChannelReply> openMultipartyDirectMessageChannel(SlackUser... users)
-            {
+            public SlackMessageHandle<SlackChannelReply> openMultipartyDirectMessageChannel(SlackUser... users) {
                 return null;
             }
 
@@ -198,11 +195,11 @@ public class TestSlackJSONMessageParser {
             }
 
             @Override
-            public void refetchUsers() {}
+            public void refetchUsers() {
+            }
 
             @Override
-            public SlackMessageHandle inviteUser(String email, String firstName, boolean setActive)
-            {
+            public SlackMessageHandle inviteUser(String email, String firstName, boolean setActive) {
                 return null;
             }
 
@@ -213,7 +210,7 @@ public class TestSlackJSONMessageParser {
 
             @Override
             public SlackMessageHandle<SlackChannelReply> inviteToChannel(SlackChannel channel, SlackUser user) {
-              return null;
+                return null;
             }
 
             @Override
@@ -227,19 +224,17 @@ public class TestSlackJSONMessageParser {
             }
 
             @Override
-            public SlackMessageHandle<GenericSlackReply> postGenericSlackCommand(Map<String, String> params, String command)
-            {
+            public SlackMessageHandle<GenericSlackReply> postGenericSlackCommand(Map<String, String> params, String command) {
                 return null;
             }
 
             @Override
-            public SlackMessageHandle<ParsedSlackReply> archiveChannel(SlackChannel channel)
-            {
+            public SlackMessageHandle<ParsedSlackReply> archiveChannel(SlackChannel channel) {
                 return null;
             }
 
-            @Override public SlackMessageHandle<ParsedSlackReply> unarchiveChannel(SlackChannel channel)
-            {
+            @Override
+            public SlackMessageHandle<ParsedSlackReply> unarchiveChannel(SlackChannel channel) {
                 return null;
             }
 
@@ -402,7 +397,7 @@ public class TestSlackJSONMessageParser {
         JsonObject object = parser.parse(TEST_USER_CHANGE).getAsJsonObject();
         SlackEvent event = SlackJSONMessageParser.decode(session, object);
         Assertions.assertThat(event).isInstanceOf(SlackUserChange.class);
-        SlackUserChange slackUserChange = (SlackUserChange)event;
+        SlackUserChange slackUserChange = (SlackUserChange) event;
         SlackUser user = slackUserChange.getUser();
         Assertions.assertThat(user).isNotNull();
         Assertions.assertThat(user.getId()).isEqualTo("TESTUSER1");
@@ -415,7 +410,7 @@ public class TestSlackJSONMessageParser {
         JsonObject object = parser.parse(TEST_TEAM_JOIN).getAsJsonObject();
         SlackEvent event = SlackJSONMessageParser.decode(session, object);
         Assertions.assertThat(event).isInstanceOf(SlackTeamJoin.class);
-        SlackTeamJoin slackTeamJoin = (SlackTeamJoin)event;
+        SlackTeamJoin slackTeamJoin = (SlackTeamJoin) event;
         SlackUser user = slackTeamJoin.getUser();
         Assertions.assertThat(user).isNotNull();
         Assertions.assertThat(user.getId()).isEqualTo("TESTUSER1");
